@@ -4,6 +4,8 @@ renderTodoList();
 
 
 
+document.querySelector('.js-add-todo-button').addEventListener('click', () => addTodo());
+
 function addTodo(){
   const nameInputElement = document.querySelector('.js-todo-input');
   const todoNameValue = nameInputElement.value;
@@ -33,21 +35,22 @@ function deleteTodo(index){
 
 function renderTodoList(){
   let todoListHTML = '';
-  for(let i = 0; i < todoList.length; i++){
-    const todoObject = todoList[i];
-    const { name } = todoObject;
-    const { dueDate } = todoObject;
+  todoList.forEach( (todoObject, index) => {
+    const { name, dueDate } = todoObject;
 
-    const html = `<div>${i + 1}) ${name}</div>
+    const html = `<div>${index + 1}) ${name}</div>
       <div>${dueDate}</div> 
-      <button onclick="
-        deleteTodo(${i});"
-        class="delete-todo-button
-        ">Delete</button>`
+      <button class="delete-todo-button js-delete-todo-button
+        ">Delete</button>`;
+
     todoListHTML += html;
-  }
+  });
 
   document.querySelector('.js-todo-list').innerHTML = todoListHTML;
+
+  document.querySelectorAll('.js-delete-todo-button').forEach((deleteButton, index) => {
+    deleteButton.addEventListener('click', () => deleteTodo(index));
+  })
 }
 
 

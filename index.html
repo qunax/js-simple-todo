@@ -3,7 +3,7 @@
   <head>
     <title>Todo List</title>
     <link rel="stylesheet"
-      href="styles/11-todo-list.css">
+      href="styles/simple-todo-list.css">
   </head>
   <body>
     <h1>Todo List</h1>
@@ -15,10 +15,7 @@
       <input type="date"
         onkeydown="handleCostKeyDown(event)"
         class="js-due-date-input todo-due-date-input">
-      <Button onclick="
-        addTodo();
-      "
-        class="add-todo-button">
+      <Button class="add-todo-button js-add-todo-button">
       Add
       </Button>
     </div>
@@ -28,6 +25,6 @@
     </div>
 
 
-    <script src="scripts/11-todo-list.js"></script>
+    <script src="scripts/simple-todo-list.js"></script>
   </body>
 </html>
